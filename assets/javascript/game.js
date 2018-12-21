@@ -1,83 +1,55 @@
+var computerNumber = 0;
+var random_result;
 var wins = 0;
-var losses = 0;
-var compnumber;
-var previous = 0;
+var losesses = 0;
+var yourTotalScoreIs = [];
 
-// Set computer random number to start game between 19 - 120
 
-var resetAndStart = function () {
-    $(".crystals").empty();
 
-    var images = ["red.png", "blue.png", "yellow.png", "green.png"]
-    compNumber = Math.floor(Math.random() * 120) + 19;
+// Open game with a random number set by the computer when game opens
 
-    $("#compnumber").html("Random Number: " + random_number);
+    var computerNumber = Math.floor(Math.random() * 101) + 19;
+        $("#compNumber").html(computerNumber);
+    
+    console.log(computerNumber);
 
-    for (var i = 0; i < 4; i++) {
-        var random = Math.floor(Math.random() * 12) + 1;
-        console.log(computerNumberGuess);
 
-        var crystal = $("<div>");
-        crystal.attr({
-            "class": 'crystal',
-            "data-random": random,
-        });
+// Set each crystal to have a random hidden value between 1 - 12
+// when the game begins
 
-        $(".crystals").append(crystals);
-    }
+
+
+for (var i = 0; i < 4; i++){
+    
+    var crystals = Math.floor(Math.random() * 11) + 1;
+
+    console.log(crystals);
 }
 
-$("#previous").html("Total Score: " + previous);
-
-resetAndStart();
-
-$(document).on('click', ".crystal", function () {
-    var num = parseInt($(this).attr("data-random"));
-
-    previous += num;
-  
-    $("#previous").html("Total score: " + previous);
-
-    console.log(previous);
-
-    if (previous > random_result) {
-        losses++;
-        $("#losses").html("You lost: " + losses);
-        console.log("You lose!");
-
-        resetAndStart();
-    }
-
-
-    else if (previous === random_number) {
-        wins++;
-
-        $("#win").html(win);
-
-        previous = 0
-        
-        console.log("You win!");
-        resetAndStart();
-    }
+// On the clicked crystal add to the previous number 
+// until it equals the total score
+$(".crystals").on('click', function () {
+    console.log($(this));
 });
 
 
 
+// Set new random number for each win or lose on each crystal
 
 
 
 
-// Set each crystal to have a random hidden value between 1 - 12
 
 
 
-// Set new random number for each win or lost on each crystal
 
-// On the clicked crystal add to the previous number 
-// until it equals the total score
+// If it equals increase wins by one & start over
 
-// If it equals increase wins start over
 
-// If it doesn't equal increase losesses start game over
+
+// If it doesn't equal increase losesses by one and start game over
+
+
+
 
 // Show your total score from clicked crystals
