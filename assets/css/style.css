@@ -9,9 +9,9 @@ h6 {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     font-size: 30px;
-    text-align: justify;
+    text-align: left;
     padding: 5px;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 #compNumber {
@@ -32,7 +32,7 @@ p {
     margin-left: 30px;
 }
 
-#total {
+.total {
     color: white;
     text-align: left;
     line-height: 40px;
@@ -47,9 +47,10 @@ p {
 
 
 img {
-    display: inline-block;
+    float: left;
     align-items: center;
-    margin-left: 40px;
+    margin-left: 100px;
+    margin-right: 100px;
     border-style: solid;
     background-color: white;
     border-color: grey;

@@ -1,8 +1,7 @@
 var computerNumber = 0;
-var random_result;
 var wins = 0;
-var losesses = 0;
-var yourTotalScoreIs = [];
+var losses = 0;
+var yourTotalScoreIs = 0;
 
 
 
@@ -15,10 +14,11 @@ var yourTotalScoreIs = [];
 
 
 // Set each crystal to have a random hidden value between 1 - 12
-// when the game begins
-
-// On the clicked crystal add to the previous number 
+// When the game begins and on the clicked crystal add to the previous number 
 // until it equals the total score
+
+
+
 
 $(function (){
 
@@ -47,16 +47,42 @@ $(function (){
                 console.log(crystal4);
             });
         });
+
+        $("yourTotalScoreIs").html("Your total score is: " + yourTotalScoreIs);
 });
 
 
 // Set new random number for each win or lose on each crystal
 // If it equals increase wins by one & start over
 // If it doesn't equal increase losesses by one and start game over
-
-
-
-
-
-
 // Show your total score from clicked crystals
+
+$(document).on('click', ".crystal1", ".crystal2", ".crystal3", ".crystal4",function () {
+
+	yourTotalScoreIs += computerNumber;
+
+
+	$("#previous").html("Total score: " + yourTotalScoreIs);
+
+    console.log(yourTotalScoreIs);
+    
+
+	if(yourTotalScoreIs > computerNumber){
+
+		losses++;
+
+		$("#total").html("Losses: " + losses);
+
+		yourTotalScoreIs = 0;
+
+	} 
+	else if(yourTotalScoreIs === computerNumber){
+
+		win++;
+
+		$("#total").html("Win: " + win);
+
+		yourTotalScoreIs = 0;
+    }
+    
+});
