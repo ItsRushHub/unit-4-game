@@ -16,8 +16,14 @@ h6 {
 
 #compNumber {
     color: white;
-    font-size: 20px;
+    font-size: 25px;
 }
+
+.Computer {
+    color: white;
+    font-size: 25px;
+}
+
 
 p {
     color: white;
