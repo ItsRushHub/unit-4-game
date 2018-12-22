@@ -4,13 +4,11 @@ var losses = 0;
 var yourTotalScoreIs = 0;
 
 
-
 // Open game with a random number set by the computer when game opens
 
     var computerNumber = Math.floor(Math.random() * 101) + 19;
         $("#compNumber").html(computerNumber);
-    
-    console.log(computerNumber);
+            console.log(computerNumber);
 
 
 // Set each crystal to have a random hidden value between 1 - 12
@@ -22,34 +20,20 @@ var yourTotalScoreIs = 0;
 
 $(function (){
 
-        $(".crystal1").on("click",function() {
-            var crystal1 = Math.floor(Math.random() * 11) + 1;
-            console.log(crystal1);
-        });
+    
+    for (var i = 0; i < 4; i++)
+    var crystals = Math.floor(Math.random() * 11) + 1;
+    
 
-        $(function () {
-            $(".crystal2").on("click",function() {
-                var crystal2 = Math.floor(Math.random() * 11) + 1;
-                console.log(crystal2);
-            });
-        });
+    $(".crystals").on("click",function() {
+        console.log(crystals);
+    });
 
-        $(function () {
-            $(".crystal3").on("click",function() {
-                var crystal3 = Math.floor(Math.random() * 11) + 1;
-                console.log(crystal3);
-            });
-        });
-
-        $(function () {
-            $(".crystal4").on("click",function() {
-                var crystal4 = Math.floor(Math.random() * 11) + 1;
-                console.log(crystal4);
-            });
-        });
+    $(".scoreNumber").html(yourTotalScoreIs);
+        console.log(yourTotalScoreIs);
 
         $("yourTotalScoreIs").html("Your total score is: " + yourTotalScoreIs);
-});
+    });
 
 
 // Set new random number for each win or lose on each crystal
@@ -57,14 +41,14 @@ $(function (){
 // If it doesn't equal increase losesses by one and start game over
 // Show your total score from clicked crystals
 
-$(document).on('click', ".crystal1", ".crystal2", ".crystal3", ".crystal4",function () {
+$(document).on('click', ".crystals", function () {
 
 	yourTotalScoreIs += computerNumber;
 
 
-	$("#previous").html("Total score: " + yourTotalScoreIs);
+	$("#score").html("Total score: " + yourTotalScoreIs);
 
-    console.log(yourTotalScoreIs);
+        console.log(yourTotalScoreIs);
     
 
 	if(yourTotalScoreIs > computerNumber){
@@ -78,11 +62,34 @@ $(document).on('click', ".crystal1", ".crystal2", ".crystal3", ".crystal4",funct
 	} 
 	else if(yourTotalScoreIs === computerNumber){
 
-		win++;
+		wins++;
 
-		$("#total").html("Win: " + win);
+		$("#total").html("Win: " + wins);
 
 		yourTotalScoreIs = 0;
     }
     
 });
+
+
+
+   // $(function () {
+        //     $(".crystal2").on("click",function() {
+        //         var crystal2 = Math.floor(Math.random() * 11) + 1;
+        //         console.log(crystal2);
+        //     });
+        // });
+
+        // $(function () {
+        //     $(".crystal3").on("click",function() {
+        //         var crystal3 = Math.floor(Math.random() * 11) + 1;
+        //         console.log(crystal3);
+        //     });
+        // });
+
+        // $(function () {
+        //     $(".crystal4").on("click",function() {
+        //         var crystal4 = Math.floor(Math.random() * 11) + 1;
+        //         console.log(crystal4);
+        //     });
+        // });

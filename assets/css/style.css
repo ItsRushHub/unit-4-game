@@ -11,7 +11,9 @@ h6 {
     font-size: 30px;
     text-align: left;
     padding: 5px;
+    margin-top: 100px;
     margin-left: 10px;
+
 }
 
 #compNumber {
@@ -49,8 +51,7 @@ p {
 img {
     float: left;
     align-items: center;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 75px;
     border-style: solid;
     background-color: white;
     border-color: grey;
