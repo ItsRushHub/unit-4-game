@@ -1,95 +1,153 @@
-var computerNumber = 0;
-var wins = 0;
-var losses = 0;
-var yourTotalScoreIs = 0;
-
-
-// Open game with a random number set by the computer when game opens
-
-    var computerNumber = Math.floor(Math.random() * 101) + 19;
-        $("#compNumber").html(computerNumber);
-            console.log(computerNumber);
-
-
-// Set each crystal to have a random hidden value between 1 - 12
-// When the game begins and on the clicked crystal add to the previous number 
-// until it equals the total score
-
-
-
-
-$(function (){
-
+// Crystal Variables
+ var crystal = {
+    red:
+    {
+        name: "red",
+        value: 0
+    },
     
-    for (var i = 0; i < 4; i++)
-    var crystals = Math.floor(Math.random() * 11) + 1;
+    blue:
+    {
+        name: "blue",
+        value: 0
+    },
+
+    yellow:
+    {
+        name: "yellow",
+        value: 0
+    },
+
+    green:
+    {
+        name: "green",
+        value: 0
+    } 
+ };
+
+//  Track Scores
+ var currentScore = 0;
+ var targetScore = 0;
+
+//  Wins and Losses
+ var winCount = 0;
+ var lossCount = 0;
+
+
+// Functions
+// Function to get random numbers
+var getRandom = function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+// Starts and restarts the game
+var startGame = function() {
+
+// Reset current score
+    currentScore = 0;
+
+// Set a new target score (between 19 and 120)
+    targetScore = getRandom(19, 120);
+
+
+// Set different values for crystals (Between 1 and 12)
+crystal.red.value = getRandom(1, 12);    
+crystal.blue.value = getRandom(1, 12);
+crystal.yellow.value = getRandom(1, 12);
+crystal.green.value = getRandom(1, 12);
     
 
-    $(".crystals").on("click",function() {
-        console.log(crystals);
-    });
-
-    $(".scoreNumber").html(yourTotalScoreIs);
-        console.log(yourTotalScoreIs);
-
-        $("yourTotalScoreIs").html("Your total score is: " + yourTotalScoreIs);
-    });
+// Change HTML to reflect changes
+$("#yourScore").html(currentScore);
+$("#targetScore").html(targetScore);
 
 
-// Set new random number for each win or lose on each crystal
-// If it equals increase wins by one & start over
-// If it doesn't equal increase losesses by one and start game over
-// Show your total score from clicked crystals
+// Test game
+console.log("=========================")
+console.log("Target Score: " + targetScore);
+console.log("Red: " + crystal.red.value + "| Blue: " + crystal.blue.value + "| Yellow: " + crystal.yellow.value + "| Green: " + crystal.green.value);
+console.log("=========================")
+}
 
-$(document).on('click', ".crystals", function () {
+// Respond to clicks on the crystals
+var addValues = function(crystal) {
+    currentScore = currentScore + crystal.value;
 
-	yourTotalScoreIs += computerNumber;
+// Change the HTML to reflect changes in currentScore    
+$("#yourScore").html(currentScore);
+
+// Call the checkWin from below
+checkWin();
 
 
-	$("#score").html("Total score: " + yourTotalScoreIs);
+// Test
+console.log("Your Score: " + currentScore);
 
-        console.log(yourTotalScoreIs);
-    
+}
 
-	if(yourTotalScoreIs > computerNumber){
+// Check win or lose and rest the game
+var checkWin = function() {
 
-		losses++;
+// Check the currentScore is larger than targetScore
+if (currentScore > targetScore) {
+    alert("Sorry, you didn't win!")
+    console.log("Sorry, you didn't win!");
 
-		$("#total").html("Losses: " + losses);
+    lossCount++;
 
-		yourTotalScoreIs = 0;
+// Change lossCount
+$("#lossCount").html(lossCount);
 
-	} 
-	else if(yourTotalScoreIs === computerNumber){
+// Restart the game
+startGame();
+}
 
-		wins++;
+else if (currentScore === targetScore) {
+    alert("You Win!")
+    console.log("You Win!");
 
-		$("#total").html("Win: " + wins);
+    winCount++;
 
-		yourTotalScoreIs = 0;
-    }
-    
+    // Change winCount
+$("#winCount").html(winCount);
+
+// Restart the game
+startGame();
+}
+
+}
+
+
+
+// Main process click event
+// ===================================
+
+// Starts the game for the first time
+startGame();
+
+$("#blue").click(function(){
+    addValues(crystal.blue);
+});
+
+$("#red").click(function(){
+    addValues(crystal.red);
+});
+
+$("#green").click(function(){
+    addValues(crystal.green);
+});
+
+$("#yellow").click(function(){
+    addValues(crystal.yellow);
 });
 
 
 
-   // $(function () {
-        //     $(".crystal2").on("click",function() {
-        //         var crystal2 = Math.floor(Math.random() * 11) + 1;
-        //         console.log(crystal2);
-        //     });
-        // });
 
-        // $(function () {
-        //     $(".crystal3").on("click",function() {
-        //         var crystal3 = Math.floor(Math.random() * 11) + 1;
-        //         console.log(crystal3);
-        //     });
-        // });
 
-        // $(function () {
-        //     $(".crystal4").on("click",function() {
-        //         var crystal4 = Math.floor(Math.random() * 11) + 1;
-        //         console.log(crystal4);
-        //     });
-        // });
+
+
+
+
+
+
